@@ -192,7 +192,7 @@
                     
                         <div class="card">
                          <img class="image-searchpus" src="{{asset('siapus/img/doctor-1.png') }}" alt="">
-                            <label for="exampleFormControlInput1" class="mb-2 title-search">Silahkan Pilih
+                            <label for="exampleFormControlInput1" class="mb-2 title-search">Pilih
                                 Puskesmas Yang Dituju</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
