@@ -1705,6 +1705,16 @@ a:hover {
     justify-content: center;
 }
 
+/* option {
+    font-size: 12px;
+} */
+
+@media (max-width: 992px) {
+    option {
+        font-size: 12px;
+    }
+}
+
 /*--------------------------------------------------------------
   # Antrean Saya Section
   --------------------------------------------------------------*/
@@ -1764,6 +1774,11 @@ a:hover {
     height: 80px;
 }
 
+@media (max-width: 992px) {
+    .image-antreans {
+        max-width: 250px;
+    }
+}
 /* .modal-content {
     position: relative;
     display: -ms-flexbox;

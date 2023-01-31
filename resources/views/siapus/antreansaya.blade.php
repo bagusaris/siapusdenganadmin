@@ -9,8 +9,10 @@
           <h2>Antrean Saya</h2>
         </div>
         
+        
+        @if ($antrean->count() > 0)
         @foreach ($antrean as $item) 
-        <div class="row d-flex">
+            <div class="row d-flex">
           <div class="col-md-10 col-sm-6 justify-content-start"  data-bs-toggle="modal" data-bs-target="#exampleModal1" data-bs-antrean="{{ $item->nomor_antrean }}" data-bs-poli="{{ $item->polis->nama_poli }}" data-bs-puskesmas="{{ $item->puskesmas->nama_puskesmas }}" data-bs-pasien="{{ $item->pasiens->nama_pasien }}">
             <table width="100%" border="0">
               <tbody>
@@ -61,6 +63,14 @@
 
           <!-- </div> -->
         </div>
+        @endforeach
+        @else
+        <div class="d-flex justify-content-center">
+            <img class="image-antreans" src="{{asset('siapus/img/antrean-1.png') }}" alt="">
+        </div>
+                    <h5 class="text-center">Anda Belum Melakukan Pendaftaran Antrean</h5>
+        @endif
+        
         <!-- Modal 1-->
         <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -119,7 +129,7 @@
           </div>
         </div>
         
-        @endforeach
+        
       </div>
       </div>
     </section>
