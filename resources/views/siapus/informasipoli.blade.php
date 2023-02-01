@@ -105,7 +105,7 @@
         <!-- ======= Panduan Pendaftaran Section ======= -->
         <section id="panduanpendaftaran" class="panduanpendaftaran">
             <div class="container" data-aos="fade-up">
-                <div class="section-title" style="margin-top: 120px;">
+                <div class="section-title">
                     <h2>Panduan Pendaftaran</h2>
                 </div>
                 <div class="row justify-content-center">
