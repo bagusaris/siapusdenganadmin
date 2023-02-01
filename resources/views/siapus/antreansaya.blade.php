@@ -23,12 +23,40 @@
                         <tr>
                           <td width="25%" valign="top" class="textt">Nama</td>
                           <td width="2%">:</td>
-                          <td style="font-weight:bold">{{$item->pasiens->nama_pasien}}</td>
+                          <td style="font-weight:bold">{{$item->pasiens->nama_pasien}}
+                          {{-- <?php
+                                $nama=$item->pasiens->nama_pasien;
+                                $jumlah_sensor=20;
+                                $setelah_angka_ke=12;
+                                
+                                $sensor = mb_substr($nama, $setelah_angka_ke, $jumlah_sensor);
+                                
+                                $nama2=explode($sensor,$nama);
+                                
+                                $nama_new=$nama2[0]."**********".$nama2[1];
+                                
+                                echo $nama_new;
+                                ?> --}}
+                          </td>
                         </tr>
                         <tr>
                           <td class="textt">NIK</td>
                           <td>:</td>
-                          <td>{{$item->pasiens->nik}}</td>
+                          <td>
+                              <?php
+                                $nik=$item->pasiens->nik;
+                                $jumlah_sensor=8;
+                                $setelah_angka_ke=4;
+                                
+                                $sensor = mb_substr($nik, $setelah_angka_ke, $jumlah_sensor);
+                                
+                                $nik2=explode($sensor,$nik);
+                                
+                                $nik_new=$nik2[0]."********".$nik2[1];
+                                
+                                echo $nik_new;
+                                ?>
+                          </td>
                         </tr>
                         <tr>
                           <td class="textt">Poli</td>
