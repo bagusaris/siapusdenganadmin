@@ -42,6 +42,7 @@ Route::get('/poli/find', [PuskesmasController::class, 'poli'])->name('puskesmas.
 Route::Resource('/puskesmas', PuskesmasController::class);
 
 //antrean
+Route::get('/saat_ini/{id_poli}/{id_puskesmas}',[AntreanController::class,'saat_ini'])->name('antrean.saat_ini');
 Route::Resource('/tiket', AntreanController::class);
 
 //admin

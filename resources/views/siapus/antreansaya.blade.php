@@ -13,7 +13,7 @@
         @if ($antrean->count() > 0)
         @foreach ($antrean as $item) 
             <div class="row d-flex">
-          <div class="col-md-10 col-sm-6 justify-content-start"  data-bs-toggle="modal" data-bs-target="#exampleModal1" data-bs-antrean="{{ $item->nomor_antrean }}" data-bs-poli="{{ $item->polis->nama_poli }}" data-bs-puskesmas="{{ $item->puskesmas->nama_puskesmas }}" data-bs-pasien="{{ $item->pasiens->nama_pasien }}">
+          <div class="col-md-10 col-sm-6 justify-content-start"  data-bs-toggle="modal" data-bs-target="#exampleModal1" data-bs-antrean="{{ $item->nomor_antrean }}" data-bs-poli="{{ $item->polis->nama_poli }}" data-bs-id_poli="{{ $item->polis->id_poli }}" data-bs-puskesmas="{{ $item->puskesmas->nama_puskesmas }}" data-bs-id_puskesmas="{{ $item->puskesmas->id_puskesmas }}" data-bs-pasien="{{ $item->pasiens->nama_pasien }}">
             <table width="100%" border="0">
               <tbody>
                 <tr>
@@ -77,11 +77,15 @@
           </div>
           @if($item->status == "Menunggu")
           <div class="col-md-2 mb-5 col-sm-6 order-last order-md-last d-flex align-items-center justify-content-center">
-            <button class="btn btn-warning">Menunggu Validasi</button>
+            <button class="btn btn-warning">Menunggu</button>
+          </div>
+          @elseif($item->status == "Dilayani")
+          <div class="col-md-2 mb-5 col-sm-6 order-last order-md-last d-flex align-items-center justify-content-center">
+            <button class="btn btn-primary">Sedang Dalam Pelayanan</button>
           </div>
           @elseif($item->status == "Selesai")
           <div class="col-md-2 mb-5 col-sm-6 order-last order-md-last d-flex align-items-center justify-content-center">
-            <button class="btn btn-success">Selesai Validasi</button>
+            <button class="btn btn-success">Selesai</button>
           </div>
           @elseif($item->status == "Batal")
           <div class="col-md-2 mb-5 col-sm-6 order-last order-md-last d-flex align-items-center justify-content-center">
@@ -147,10 +151,11 @@
                   <h5 class="modal-title" id="exampleModalLabel"><strong id="nama_poli"></strong></h5>
                 </div>
                 <div class="col-12 d-flex align-items-center justify-content-center">
-                  <h5 class="modal-title" id="exampleModalLabel">Antrean Saat Ini : C 0001</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">Antrean Saat Ini : <strong id="saat_ini"></strong></h5>
                 </div>
+                
                 <div class="col-12 d-flex align-items-center justify-content-center">
-                                <h5 class="modal-title" id="exampleModalLabel">Antrean Selanjutnya : C 0002</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">Antrean Selanjutnya : C 0002</h5>
                   </div>
                 </div>
             </div>
@@ -172,10 +177,23 @@
       const tabel = document.getElementById('popupTiket');
       modal.addEventListener('show.bs.modal', evt => {
         let activeBtn = event.relatedTarget;
-        modal.querySelector('#nama_pus').textContent = activeBtn.getAttribute('data-bs-puskesmas')
-        modal.querySelector('#no_antrean').textContent = activeBtn.getAttribute('data-bs-antrean')
-        modal.querySelector('#nama_pasien').textContent = 'Nama : ' + activeBtn.getAttribute('data-bs-pasien')
-        modal.querySelector('#nama_poli').textContent = activeBtn.getAttribute('data-bs-poli')
+        const poli = activeBtn.getAttribute('data-bs-id_poli');
+        const puskesmas = activeBtn.getAttribute('data-bs-id_puskesmas');
+        $.ajax({
+          url: "/saat_ini/"+poli+"/"+puskesmas,
+          type: 'GET',
+            dataType: "json",
+            complete: function(res) {
+              const data = res.responseJSON;
+              modal.querySelector('#saat_ini').textContent = data[0].nomor_antrean;
+              console.log (data[0].nomor_antrean);
+            }
+        })
+        modal.querySelector('#nama_pus').textContent = activeBtn.getAttribute('data-bs-puskesmas');
+        modal.querySelector('#no_antrean').textContent = activeBtn.getAttribute('data-bs-antrean');
+        modal.querySelector('#nama_pasien').textContent = 'Nama : ' + activeBtn.getAttribute('data-bs-pasien');
+        modal.querySelector('#nama_poli').textContent = activeBtn.getAttribute('data-bs-poli');
+        
     })
   });
 

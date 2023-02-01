@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\antrean;
+use Carbon\Carbon;
 
 class AntreanController extends Controller
 {
@@ -16,7 +17,7 @@ class AntreanController extends Controller
     {
         //
         $antrean = Antrean::with(['polis', 'puskesmas', 'pasiens'])->get();
-
+        
         // dd($antrean);
 
         return view('siapus.antreansaya', compact('antrean'));
@@ -86,5 +87,13 @@ class AntreanController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function saat_ini($id_poli, $id_puskesmas){
+        $now = Carbon::now()->format('Y-m-d').'%';
+        $saat_ini = Antrean::where('status','Dilayani')->where('id_puskesmas',$id_puskesmas)->where('id_poli',$id_poli)->where('created_at','like', $now)->limit(1)->get(); 
+        // dd($id_poli, $id_puskesmas);
+        // dd($now);
+        return response()->json($saat_ini);
     }
 }
