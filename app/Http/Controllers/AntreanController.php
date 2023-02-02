@@ -96,4 +96,12 @@ class AntreanController extends Controller
         // dd($now);
         return response()->json($saat_ini);
     }
+
+    public function lanjut($id_poli, $id_puskesmas){
+        $now = Carbon::now()->format('Y-m-d').'%';
+        $lanjut = Antrean::where('status','Menunggu')->where('id_puskesmas',$id_puskesmas)->where('id_poli',$id_poli)->where('created_at','like', $now)->limit(1)->get(); 
+        // dd($id_poli, $id_puskesmas);
+        // dd($now);
+        return response()->json($lanjut);
+    }
 }

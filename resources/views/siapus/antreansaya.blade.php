@@ -81,7 +81,7 @@
           </div>
           @elseif($item->status == "Dilayani")
           <div class="col-md-2 mb-5 col-sm-6 order-last order-md-last d-flex align-items-center justify-content-center">
-            <button class="btn btn-primary">Sedang Dalam Pelayanan</button>
+            <button class="btn btn-primary">Dalam Pelayanan</button>
           </div>
           @elseif($item->status == "Selesai")
           <div class="col-md-2 mb-5 col-sm-6 order-last order-md-last d-flex align-items-center justify-content-center">
@@ -155,7 +155,7 @@
                 </div>
                 
                 <div class="col-12 d-flex align-items-center justify-content-center">
-                  <h5 class="modal-title" id="exampleModalLabel">Antrean Selanjutnya : C 0002</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">Antrean Selanjutnya : <strong id="lanjut"></strong></h5>
                   </div>
                 </div>
             </div>
@@ -186,7 +186,15 @@
             complete: function(res) {
               const data = res.responseJSON;
               modal.querySelector('#saat_ini').textContent = data[0].nomor_antrean;
-              console.log (data[0].nomor_antrean);
+            }
+        })
+         $.ajax({
+          url: "/lanjut/"+poli+"/"+puskesmas,
+          type: 'GET',
+            dataType: "json",
+            complete: function(res) {
+              const data = res.responseJSON;
+              modal.querySelector('#lanjut').textContent = data[0].nomor_antrean;
             }
         })
         modal.querySelector('#nama_pus').textContent = activeBtn.getAttribute('data-bs-puskesmas');
