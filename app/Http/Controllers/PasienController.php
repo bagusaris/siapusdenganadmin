@@ -59,29 +59,32 @@ class PasienController extends Controller
         $validatedData=$request->validate([
             'nik' =>'required|unique:pasiens',
         ]);
-        
+
         $find_puskesmas=poli::where('id_puskesmas',$data['id_puskesmas'])->get();//poli sesuai puskesmas
-       
+
         foreach ($find_puskesmas as $item_puskesmas) {
             if($data['id_poli']==$item_puskesmas->id_poli){
                 $uuid = $item_puskesmas->kode_poli . '0001';
                 $no = 1;
-                $find_antrian = antrean::where('id_poli', $data['id_poli'])->where('id_puskesmas',$data['id_puskesmas'])->orderByDesc('nomer')->first();
-                
+                $find_antrian = antrean::where('id_poli', $data['id_poli'])->where('id_puskesmas',$data['id_puskesmas'])->orderByDesc('nomor_antrean')->first();
+
                 if ($find_antrian) {
-                    $current_number = explode($item_puskesmas->kode_poli,$find_antrian->nomer);
-                    $digit=strlen($current_number[0]+1);
-                    if ($digit == 1) {
-                        $uuid = $item_puskesmas->kode_poli . '000' . $digit + 1;
+                    $current_number = explode($item_puskesmas->kode_poli,$find_antrian->nomor_antrean);
+                    $digit=strlen($current_number[1]);
+                    if ($digit == 4) {
+                        $angka=explode('000',$current_number[1]);
+                        $uuid =  $item_puskesmas->kode_poli . '000' . $angka[1] + 1;
                         $no= $digit + 1;
-                    } else if ($digit == 2) {
-                        $uuid = $item_puskesmas->kode_poli . '00' . $digit + 1;
+                    }else if ($digit == 3) {
+                        $angka=explode('00',$current_number[1]);
+                        $uuid =  $item_puskesmas->kode_poli . '00' . $angka[1] + 1;
                         $no= $digit + 1;
-                    } else if ($digit == 3) {
-                        $uuid = $item_puskesmas->kode_poli . '0' . $digit + 1;
+                    }else if ($digit == 2) {
+                        $angka=explode('0',$current_number[1]);
+                        $uuid =  $item_puskesmas->kode_poli . '0' . $angka[1] + 1;
                         $no= $digit + 1;
-                    } else if ($digit == 4) {
-                        $uuid = $item_puskesmas->kode_poli . $digit + 1;
+                    }else if ($digit == 1) {
+                        $uuid =  $item_puskesmas->kode_poli .  $current_number[1] + 1;
                         $no= $digit + 1;
                     }
                 }
@@ -96,8 +99,8 @@ class PasienController extends Controller
                 ]);
             }
         }
-        
-        
+
+
 
         return redirect('/tiket');
     }
