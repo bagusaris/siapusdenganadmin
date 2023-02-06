@@ -18,9 +18,15 @@ class AntreanController extends Controller
         //
         $antrean = Antrean::with(['polis', 'puskesmas', 'pasiens'])->get();
         
-        // dd($antrean);
+        $hari = Carbon::now()->locale('id')->settings(['formatFunction' => 'translatedFormat'])->format('l, d F Y');
+        // echo $hari->format('l, d F Y');
+        // dd($hari);
 
-        return view('siapus.antreansaya', compact('antrean'));
+        $waktu = Carbon::now()->toTimeString();
+        // echo $hari->format('l, d F Y');
+        // dd($waktu);
+
+        return view('siapus.antreansaya', compact('antrean','hari','waktu'));
     }
 
     /**

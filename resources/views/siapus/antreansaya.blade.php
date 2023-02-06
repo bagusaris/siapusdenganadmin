@@ -13,7 +13,7 @@
         @if ($antrean->count() > 0)
         @foreach ($antrean as $item) 
             <div class="row d-flex">
-          <div class="col-md-10 col-sm-6 justify-content-start"  data-bs-toggle="modal" data-bs-target="#exampleModal1" data-bs-antrean="{{ $item->nomor_antrean }}" data-bs-poli="{{ $item->polis->nama_poli }}" data-bs-id_poli="{{ $item->polis->id_poli }}" data-bs-puskesmas="{{ $item->puskesmas->nama_puskesmas }}" data-bs-id_puskesmas="{{ $item->puskesmas->id_puskesmas }}" data-bs-pasien="{{ $item->pasiens->nama_pasien }}">
+          <div class="col-md-10 col-sm-6 justify-content-start"  data-bs-toggle="modal" data-bs-target="#exampleModal1" data-bs-antrean="{{ $item->nomor_antrean }}" data-bs-hari="{{ $hari }}" data-bs-waktu="{{ $waktu }}" data-bs-poli="{{ $item->polis->nama_poli }}" data-bs-id_poli="{{ $item->polis->id_poli }}" data-bs-puskesmas="{{ $item->puskesmas->nama_puskesmas }}" data-bs-id_puskesmas="{{ $item->puskesmas->id_puskesmas }}" data-bs-pasien="{{ $item->pasiens->nama_pasien }}">
             <table width="100%" border="0">
               <tbody>
                 <tr>
@@ -125,13 +125,11 @@
                 
                 <div class="row d-flex" style="border-color: transparent; margin-top: -50px;">
                   <div class="col-md-6 col-sm-6 d-flex align-items-center justify-content-center">
-                    <h5 class="modal-title" id="exampleModalLabel" style="font-size: 16px;"><strong>Kamis,
-                        20-11-2022</strong></h5>
+                    <h5 class="modal-title" id="exampleModalLabel" style="font-size: 16px;"><strong id="hari"></strong></h5>
                   </div>
                   <div class="col-md-6 col-sm-6 d-flex align-items-center justify-content-center">
-                    <h5 class="modal-title" id="exampleModalLabel" style="font-size: 16px;"><strong>Jam
-                        08:45:15</strong></h5>
-                  </div>
+                    <h5 class="modal-title" id="exampleModalLabel" style="font-size: 16px;"><strong>Jam, </strong><strong id="waktu"></strong></h5>
+                </div>
                 </div>
                 <div class="col d-flex align-items-center justify-content-center" style="margin-top: -30px;">
                   <h5 class="modal-title" id="exampleModalLabel" style="font-size: 20px;"><strong>Nomor Antrean
@@ -201,6 +199,8 @@
         modal.querySelector('#no_antrean').textContent = activeBtn.getAttribute('data-bs-antrean');
         modal.querySelector('#nama_pasien').textContent = 'Nama : ' + activeBtn.getAttribute('data-bs-pasien');
         modal.querySelector('#nama_poli').textContent = activeBtn.getAttribute('data-bs-poli');
+        modal.querySelector('#hari').textContent = activeBtn.getAttribute('data-bs-hari');
+        modal.querySelector('#waktu').textContent = activeBtn.getAttribute('data-bs-waktu');
         
     })
   });
