@@ -1281,6 +1281,7 @@ section {
 
 .popup,
 .popupkia,
+.syarat,
 .popupgigi {
     width: 100%;
     height: 100%;
@@ -1350,6 +1351,7 @@ section {
 
 #popup:target,
 #popupkia:target,
+#syarat:target,
 #popupgigi:target {
     opacity: 1;
     visibility: visible;
@@ -1361,6 +1363,11 @@ section {
 }
 
 #popupkia:target .popup-content {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#syarat:target .popup-content {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
 }

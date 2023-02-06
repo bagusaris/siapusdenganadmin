@@ -178,7 +178,7 @@
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
                         <label class="form-check-label" for="invalidCheck">
-                            Saya setuju dengan syarat dan ketentuan yang berlaku
+                           Saya setuju dengan <a href="#syarat">syarat dan ketentuan yang berlaku</a>
                         </label>
                         <div class="invalid-feedback">
                             Anda harus setuju sebelum mendaftar.
@@ -189,6 +189,25 @@
                     <button class="btn btn-success" type="submit">Submit</button>
                 </div>
         </div>
+            <div class="syarat" id="syarat">
+                <div class="popup-content">
+                        <div class="popup-header">
+                            <h2><b>Syarat & Ketentuan</b></h2>
+                            <a href="#" class="popup-close">&times;</a>
+                        </div>
+                        {{-- <div class="popup-img">
+                            <img src="{{asset('siapus/img/poli/KIA.png') }}" alt="">
+                        </div> --}}
+                        <div class="popup-text">
+                            <ol>
+                                <li>Pasien harus datang ke puskesmas sebelum nomor antrean dengan <strong>jarak 3 antrean</strong></li>
+                                <li>Pasien membawa <strong>KTP</strong> sesuai dengan identitas yang <strong>didaftarkan</strong></li>
+                                <li>Jika dalam 3 kali panggilan nomor antrean pasien tidak hadir maka antrean tersebut akan <strong>dilompati</strong></li>
+                            </ol>  
+                        </div>
+                    </div>
+                </div>
+            </div>
         </form>
     </section>
 
