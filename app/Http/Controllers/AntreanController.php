@@ -17,16 +17,8 @@ class AntreanController extends Controller
     {
         //
         $antrean = Antrean::with(['polis', 'puskesmas', 'pasiens'])->get();
-        
-        $hari = Carbon::now()->locale('id')->settings(['formatFunction' => 'translatedFormat'])->format('l, d F Y');
-        // echo $hari->format('l, d F Y');
-        // dd($hari);
 
-        $waktu = Carbon::now()->toTimeString();
-        // echo $hari->format('l, d F Y');
-        // dd($waktu);
-
-        return view('siapus.antreansaya', compact('antrean','hari','waktu'));
+        return view('siapus.antreansaya', compact('antrean'));
     }
 
     /**
@@ -97,7 +89,7 @@ class AntreanController extends Controller
 
     public function saat_ini($id_poli, $id_puskesmas){
         $now = Carbon::now()->format('Y-m-d').'%';
-        $saat_ini = Antrean::where('status','Dilayani')->where('id_puskesmas',$id_puskesmas)->where('id_poli',$id_poli)->where('created_at','like', $now)->limit(1)->get(); 
+        $saat_ini = Antrean::where('status','Dilayani')->where('id_puskesmas',$id_puskesmas)->where('id_poli',$id_poli)->where('created_at','like', $now)->limit(1)->get();
         // dd($id_poli, $id_puskesmas);
         // dd($now);
         return response()->json($saat_ini);
@@ -105,7 +97,7 @@ class AntreanController extends Controller
 
     public function lanjut($id_poli, $id_puskesmas){
         $now = Carbon::now()->format('Y-m-d').'%';
-        $lanjut = Antrean::where('status','Menunggu')->where('id_puskesmas',$id_puskesmas)->where('id_poli',$id_poli)->where('created_at','like', $now)->limit(1)->get(); 
+        $lanjut = Antrean::where('status','Menunggu')->where('id_puskesmas',$id_puskesmas)->where('id_poli',$id_poli)->where('created_at','like', $now)->limit(1)->get();
         // dd($id_poli, $id_puskesmas);
         // dd($now);
         return response()->json($lanjut);

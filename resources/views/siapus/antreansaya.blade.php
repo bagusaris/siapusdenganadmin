@@ -8,12 +8,12 @@
         <div class="section-title" style="margin-top: 50px;">
           <h2>Antrean Saya</h2>
         </div>
-        
-        
+
+
         @if ($antrean->count() > 0)
-        @foreach ($antrean as $item) 
+        @foreach ($antrean as $item)
             <div class="row d-flex">
-          <div class="col-md-10 col-sm-6 justify-content-start"  data-bs-toggle="modal" data-bs-target="#exampleModal1" data-bs-antrean="{{ $item->nomor_antrean }}" data-bs-hari="{{ $hari }}" data-bs-waktu="{{ $waktu }}" data-bs-poli="{{ $item->polis->nama_poli }}" data-bs-id_poli="{{ $item->polis->id_poli }}" data-bs-puskesmas="{{ $item->puskesmas->nama_puskesmas }}" data-bs-id_puskesmas="{{ $item->puskesmas->id_puskesmas }}" data-bs-pasien="{{ $item->pasiens->nama_pasien }}">
+          <div class="col-md-10 col-sm-6 justify-content-start"  data-bs-toggle="modal" data-bs-target="#exampleModal1" data-bs-antrean="{{ $item->nomor_antrean }}" data-bs-waktu="{{ Carbon\Carbon::parse($item->created_at)->locale('id')->setTimezone('UTC 7')->settings(['formatFunction' => 'translatedFormat'])->format('H:i:s A') }}" data-bs-hari="{{ Carbon\Carbon::parse($item->created_at)->locale('id')->settings(['formatFunction' => 'translatedFormat'])->format('l, d F Y') }}" data-bs-poli="{{ $item->polis->nama_poli }}" data-bs-id_poli="{{ $item->polis->id_poli }}" data-bs-puskesmas="{{ $item->puskesmas->nama_puskesmas }}" data-bs-id_puskesmas="{{ $item->puskesmas->id_puskesmas }}" data-bs-pasien="{{ $item->pasiens->nama_pasien }}">
             <table width="100%" border="0">
               <tbody>
                 <tr>
@@ -28,13 +28,13 @@
                                 $nama=$item->pasiens->nama_pasien;
                                 $jumlah_sensor=20;
                                 $setelah_angka_ke=12;
-                                
+
                                 $sensor = mb_substr($nama, $setelah_angka_ke, $jumlah_sensor);
-                                
+
                                 $nama2=explode($sensor,$nama);
-                                
+
                                 $nama_new=$nama2[0]."**********".$nama2[1];
-                                
+
                                 echo $nama_new;
                                 ?> --}}
                           </td>
@@ -47,13 +47,13 @@
                                 $nik=$item->pasiens->nik;
                                 $jumlah_sensor=8;
                                 $setelah_angka_ke=4;
-                                
+
                                 $sensor = mb_substr($nik, $setelah_angka_ke, $jumlah_sensor);
-                                
+
                                 $nik2=explode($sensor,$nik);
-                                
+
                                 $nik_new=$nik2[0]."********".$nik2[1];
-                                
+
                                 echo $nik_new;
                                 ?>
                           </td>
@@ -102,7 +102,7 @@
         </div>
                     <h5 class="text-center">Anda Belum Melakukan Pendaftaran Antrean</h5>
         @endif
-        
+
         <!-- Modal 1-->
         <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -122,7 +122,7 @@
                     </tbody>
                   </table>
                 </div>
-                
+
                 <div class="row d-flex" style="border-color: transparent; margin-top: -50px;">
                   <div class="col-md-6 col-sm-6 d-flex align-items-center justify-content-center">
                     <h5 class="modal-title" id="exampleModalLabel" style="font-size: 16px;"><strong id="hari"></strong></h5>
@@ -151,7 +151,7 @@
                 <div class="col-12 d-flex align-items-center justify-content-center">
                   <h5 class="modal-title" id="exampleModalLabel">Antrean Saat Ini : <strong id="saat_ini"></strong></h5>
                 </div>
-                
+
                 <div class="col-12 d-flex align-items-center justify-content-center">
                   <h5 class="modal-title" id="exampleModalLabel">Antrean Selanjutnya : <strong id="lanjut"></strong></h5>
                   </div>
@@ -159,8 +159,8 @@
             </div>
           </div>
         </div>
-        
-        
+
+
       </div>
       </div>
     </section>
@@ -201,7 +201,7 @@
         modal.querySelector('#nama_poli').textContent = activeBtn.getAttribute('data-bs-poli');
         modal.querySelector('#hari').textContent = activeBtn.getAttribute('data-bs-hari');
         modal.querySelector('#waktu').textContent = activeBtn.getAttribute('data-bs-waktu');
-        
+
     })
   });
 
