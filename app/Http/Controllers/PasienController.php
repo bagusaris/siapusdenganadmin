@@ -44,7 +44,7 @@ class PasienController extends Controller
         $provinsi= provinsi::all();
         // $time = date('h:i:s','08:00:00');
         $openTime = strtotime('07:00:00');
-        $closeTime = strtotime('15:00:00');
+        $closeTime = strtotime('11:00:00');
         // return dd(date('h:i:s',$test));
         $date = Carbon::now();
         $timeNow = strtotime($date->toTimeString());
