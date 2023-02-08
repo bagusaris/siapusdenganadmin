@@ -11,7 +11,7 @@ use App\Models\provinsi;
 use App\Models\kabupaten;
 use App\Models\kecamatan;
 use App\Models\desa;
-
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Http;
 
 class PasienController extends Controller
@@ -42,7 +42,13 @@ class PasienController extends Controller
         //
         $puskesmas = puskesmas::all();
         $provinsi= provinsi::all();
-        return view('siapus.pendaftaranantrean', compact('puskesmas', 'provinsi'));
+        // $time = date('h:i:s','08:00:00');
+        $openTime = strtotime('08:00:00');
+        $closeTime = strtotime('15:00:00');
+        // return dd(date('h:i:s',$test));
+        $date = Carbon::now();
+        $timeNow = strtotime($date->toTimeString());
+        return view('siapus.pendaftaranantrean', compact('puskesmas', 'provinsi', 'timeNow', 'openTime', 'closeTime'));
     }
 
     /**
