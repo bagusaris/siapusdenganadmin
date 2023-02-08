@@ -47,7 +47,7 @@
 
         echo hari_ini() . ", ";
         date_default_timezone_set('Asia/Jakarta');
-        echo date('d-m-Y  H:i:s'); //kombinasi jam dan tanggal
+        echo date('d-m-Y  H:i').' WIB'; //kombinasi jam dan tanggal
         ?>
 
      </div>
