@@ -13,7 +13,7 @@
         @if ($antrean->count() > 0)
         @foreach ($antrean as $item)
             <div class="row d-flex">
-          <div class="col-md-10 col-sm-6 justify-content-start"  data-bs-toggle="modal" data-bs-target="#exampleModal1" data-bs-antrean="{{ $item->nomor_antrean }}" data-bs-waktu="{{ Carbon\Carbon::parse($item->created_at)->locale('id')->setTimezone('UTC 7')->settings(['formatFunction' => 'translatedFormat'])->format('H:i:s A') }}" data-bs-hari="{{ Carbon\Carbon::parse($item->created_at)->locale('id')->settings(['formatFunction' => 'translatedFormat'])->format('l, d F Y') }}" data-bs-poli="{{ $item->polis->nama_poli }}" data-bs-id_poli="{{ $item->polis->id_poli }}" data-bs-puskesmas="{{ $item->puskesmas->nama_puskesmas }}" data-bs-id_puskesmas="{{ $item->puskesmas->id_puskesmas }}" data-bs-pasien="{{ $item->pasiens->nama_pasien }}">
+          <div class="col-md-10 col-sm-6 justify-content-start"  data-bs-toggle="modal" data-bs-target="#exampleModal1" data-bs-antrean="{{ $item->nomor_antrean }}" data-bs-waktu="{{ Carbon\Carbon::parse($item->created_at)->locale('id')->setTimezone('Asia/Jakarta')->settings(['formatFunction' => 'translatedFormat'])->format('H:i:s') }}" data-bs-hari="{{ Carbon\Carbon::parse($item->created_at)->locale('id')->settings(['formatFunction' => 'translatedFormat'])->format('l, d F Y') }}" data-bs-poli="{{ $item->polis->nama_poli }}" data-bs-id_poli="{{ $item->polis->id_poli }}" data-bs-puskesmas="{{ $item->puskesmas->nama_puskesmas }}" data-bs-id_puskesmas="{{ $item->puskesmas->id_puskesmas }}" data-bs-pasien="{{ $item->pasiens->nama_pasien }}">
             <table width="100%" border="0">
               <tbody>
                 <tr>
