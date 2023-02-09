@@ -8,40 +8,8 @@
                 <h2>Pendaftaran Antrean Pasien</h2>
             </div>
             @if ($timeNow >= $openTime and $timeNow <= $closeTime)
-                    <!-- {{-- <form method="post" action="{{route('tiket')}}"> --}} -->
-                    <!-- <form action="action_page.html" class="was-validated" method="get">
-                        <div class="form-group">
-                            <label for="uname">Username:</label>
-                            <input type="text" class="form-control" id="uname" placeholder="Ketik username" name="uname" required>
-                            <div class="valid-feedback">Username Valid</div>
-                            <div class="invalid-feedback">maaf, Username tidak boleh kosong !</div>
-                        </div>
-                        <div class="form-group">
-                            <label for="pwd">Password:</label>
-                            <input type="password" class="form-control" id="pwd" placeholder="Ketik password" name="pswd" required>
-                            <div class="valid-feedback">Password Valid</div>
-                            <div class="invalid-feedback">Maaf, Password tidak boleh kosong !</div>
-                        </div>
-                        <div class="form-group form-check">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox" name="remember" required>Saya Bukan Robot
-                                <div class="valid-feedback">Anda adalah Manusia</div>
-                                <div class="invalid-feedback">Pastikan Anda Bukan Robot</div>
-                            </label>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form> -->
                     <form method="post" action="{{route('pasiens.store')}}" enctype="multipart/form-data">
                         @csrf
-                        <!-- <div class="form-group mb-3">
-                            <label for="exampleFormControlInput1" class="mb-2">NIK</label>
-                            <div class="input-group has-validation">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"> <i class="fa-solid fa-address-card"></i></span>
-                                </div>
-                                <input type="text" pattern="[0-9]{16}" name="nik" id="nik" class="form-control" placeholder="Masukkan nik anda" required>
-                            </div>
-                        </div> -->
                         <div class="form-group mb-3">
                             <label for="exampleFormControlInput1" class="mb-2">NIK</label>
                             <div class="input-group">
@@ -51,15 +19,6 @@
                                 <input type="text" pattern="[0-9]{16}" name="nik" id="nik" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan nik anda " required>
                             </div>
                         </div>
-                        <!-- <div class="form-group mb-3">
-                                <label for="exampleFormControlInput1" class="mb-2">Nama</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"> <i class="fa-solid fa-user"></i></span>
-                                    </div>
-                                    <input type="text" name="nama_pasien" id="nama_pasien" class="form-control" placeholder="Masukkan nama anda" required>
-                                </div>
-                            </div> -->
                         <div class="form-group mb-3">
                             <label for="exampleFormControlInput2" class="mb-2">Nama</label>
                             <div class="input-group">
@@ -97,7 +56,6 @@
                                     <div>
                                         <select name="kabupaten" id="kabupaten" class="form-select" data-live-search="true">
                                             <option selected disabled value="">Pilih Kabupaten/Kota Anda</option>
-                                            {{-- <option value="{{$kabupaten['id_kab']}}">{{$kabupaten['nama_kab']}}</option> --}}
                                         </select>
                                     </div>
                                 </div>
@@ -196,9 +154,6 @@
                                     <h2><b>Syarat & Ketentuan</b></h2>
                                     <a href="#" class="popup-close">&times;</a>
                                 </div>
-                                {{-- <div class="popup-img">
-                                    <img src="{{asset('siapus/img/poli/KIA.png') }}" alt="">
-                                </div> --}}
                                 <div class="popup-text">
                                     <ol>
                                         <li>Pasien harus datang ke puskesmas sebelum nomor antrean dengan <strong>jarak 3 antrean</strong></li>
@@ -217,21 +172,6 @@
                     <h5 class="text-center">Pendaftaran Antrean Dapat Diakses Pukul <strong>07.00 WIB - 11.00 WIB</strong></h5>
             @endif
     </section>
-
-
-    {{-- <div class="popupdaftar" id="popupdaftar">
-            <div class="popup-content-daftar">
-                <div >
-                    <img class="popup-img-daftar" src="{{asset('./siapus/img/pop-up/pendaftaran.png') }}" alt="">
-    </div>
-    <div class="popup-text-daftar">
-        <p>Apakah data yang anda masukkan sudah benar?</p>
-    </div>
-    <a href="{{route('daftar')}}" class="btn popup-btn1"> Tidak </a>
-    <a href="{{route('tiket')}}" class="btn popup-btn2"> Ya </a>
-
-    </div>
-    </div> --}}
 
 </section>
 
@@ -287,6 +227,4 @@
         });
     });
 
-    // const d = new Date().toLocaleTimeString();
-    // console.log(d == '');
 </script>

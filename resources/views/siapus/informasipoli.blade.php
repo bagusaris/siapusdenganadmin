@@ -12,9 +12,6 @@
                 <div class="row justify-content-center">
                     <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-                            <!-- <div class="icon"><i class="fas fa-heartbeat"></i></div> -->
-                            <!-- <div class="icon"><img src="./assets/img/poli/1.png" class="card-img" alt=".."><b><a href=""
-                                        style="margin-left: 25px; color: black;">POLI UMUM</a></b></i></div> -->
                                         <div class="icon"><img src="{{asset('siapus/img/poli/UMUM.png') }}" class="card-img" alt=".."><b></b></i></div>
                             <h4 class="title"><a href="">POLI UMUM</a></h4>
                             <p class="description">Poli umum adalah jenis layanan di Puskesmas yang memberikan
@@ -25,7 +22,6 @@
 
                     <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-                            <!-- <div class="icon"><i class="fas fa-pills"></i></div> -->
                             <div class="icon"><img src="{{asset('siapus/img/poli/KIA.png') }}" class="card-img" alt=".."><b></b></i></div>
                             <h4 class="title"><a href="">POLI KIA</a></h4>
                             <p class="description">Poli KIA adalah jenis layanan di Puskesmas yang memberikan
@@ -36,7 +32,6 @@
 
                     <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
-                            <!-- <div class="icon"><i class="fas fa-thermometer"></i></div> -->
                             <div class="icon"><img src="{{asset('siapus/img/poli/GIGI.png') }}" class="card-img" alt=".."><b></b></i></div>
                             <h4 class="title"><a href="">POLI GIGI</a></h4>
                             <p class="description">Poli Gigi adalah jenis layanan di Puskesmas yang memberikan
@@ -111,9 +106,6 @@
                 <div class="row justify-content-center">
                     <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-                            <!-- <div class="icon"><i class="fas fa-heartbeat"></i></div> -->
-                            <!-- <div class="icon"><img src="./assets/img/poli/1.png" class="card-img" alt=".."><b><a href=""
-                                        style="margin-left: 25px; color: black;">POLI UMUM</a></b></i></div> -->
                                         <div class="icon"><img src="{{asset('./siapus/img/panduanpendaftaran/1.png') }}" class="card-img" alt=".."><b></b></i></div>
                             <!-- <h4 class="title"><a href="">POLI UMUM</a></h4> -->
                             <p class="description">Setelah anda masuk halaman utama, pilih menu pendaftaran antrean</p>
